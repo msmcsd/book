@@ -17,8 +17,12 @@ function ElevationScroll(props) {
 export default function Header() {
   return (
     <ElevationScroll>
-      <AppBar position="fixed" color="primary">
-        <Toolbar>Hello</Toolbar>
+      <AppBar
+        position="fixed"
+        color="primary"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
+        <Toolbar />
       </AppBar>
     </ElevationScroll>
   );
