@@ -102,7 +102,7 @@ export default function MiniDrawer() {
   };
 
   const handleDrawerClose = () => {
-    setOpen(true);
+    setOpen(false);
   };
 
   const DashboardMenuItems = [
@@ -122,6 +122,45 @@ export default function MiniDrawer() {
     { name: "Merchants", icon: <StorefrontIcon />, link: "/merchants" },
     { name: "Users", icon: <GroupIcon />, link: "/users" },
   ];
+
+  function MenuList(props) {
+    return (
+      <List>
+        {props.menus.map((menu) => (
+          <ListItem
+            key={menu.name}
+            onClick={handleDrawerClose}
+            disablePadding
+            sx={{ display: "block" }}
+            component={Link}
+            to={menu.link}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                {menu.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={menu.name}
+                sx={{ opacity: open ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    );
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -156,78 +195,11 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {DashboardMenuItems.map((menu) => (
-            <ListItem
-              key={menu.name}
-              onClick={handleDrawerClose}
-              disablePadding
-              sx={{ display: "block" }}
-              component={Link}
-              to={menu.link}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {menu.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={menu.name}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <MenuList menus={DashboardMenuItems} />
         <Divider />
-        <List>
-          {SettingsMenuItems.map((menu) => (
-            <ListItem
-              key={menu.name}
-              onClick={handleDrawerClose}
-              disablePadding
-              sx={{ display: "block" }}
-              component={Link}
-              to={menu.link}
-            >
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {menu.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primary={menu.name}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <MenuList menus={SettingsMenuItems} />
       </Drawer>
-      <Box sx={{ flexGrow: 1, p: 3 }}>
-        {/* DrawerHeader is needed in order to show 123 under AppBar */}
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         123
       </Box>

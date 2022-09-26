@@ -9,7 +9,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <MiniDrawer />
         <Routes>
           <Route exact path="/" element={<div>Home</div>} />
