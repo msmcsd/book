@@ -1,6 +1,5 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -26,6 +25,8 @@ import GroupIcon from "@mui/icons-material/Group";
 
 import { Link } from "react-router-dom";
 
+import DrawerHeader from "./DrawerHeader";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -48,15 +49,6 @@ const closedMixin = (theme) => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -163,7 +155,7 @@ export default function MiniDrawer() {
   }
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -199,10 +191,6 @@ export default function MiniDrawer() {
         <Divider />
         <MenuList menus={SettingsMenuItems} />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        123
-      </Box>
-    </Box>
+    </>
   );
 }
