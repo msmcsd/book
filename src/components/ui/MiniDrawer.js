@@ -16,8 +16,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SummarizeIcon from "@mui/icons-material/Summarize";
+import PaidIcon from "@mui/icons-material/Paid";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import GroupIcon from "@mui/icons-material/Group";
+
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -100,17 +106,21 @@ export default function MiniDrawer() {
   };
 
   const DashboardMenuItems = [
-    { name: "Dashboard", icon: <InboxIcon />, link: "/" },
-    { name: "Expenses", icon: <InboxIcon />, link: "/expenses" },
-    { name: "Income", icon: <InboxIcon />, link: "/income" },
-    { name: "Yearly Summary", icon: <InboxIcon />, link: "/yearlysummary" },
+    { name: "Dashboard", icon: <DashboardIcon />, link: "/" },
+    { name: "Expenses", icon: <ShoppingCartIcon />, link: "/expenses" },
+    { name: "Income", icon: <PaidIcon />, link: "/income" },
+    { name: "Yearly Summary", icon: <SummarizeIcon />, link: "/yearlysummary" },
   ];
 
   const SettingsMenuItems = [
-    { name: "Expense Types", icon: <MailIcon />, link: "/expensetypes" },
-    { name: "Income Types", icon: <MailIcon />, link: "/incometypes" },
-    { name: "Merchants", icon: <MailIcon />, link: "/merchants" },
-    { name: "Users", icon: <MailIcon />, link: "/users" },
+    {
+      name: "Expense Types",
+      icon: <ShoppingCartIcon />,
+      link: "/expensetypes",
+    },
+    { name: "Income Types", icon: <PaidIcon />, link: "/incometypes" },
+    { name: "Merchants", icon: <StorefrontIcon />, link: "/merchants" },
+    { name: "Users", icon: <GroupIcon />, link: "/users" },
   ];
 
   return (
@@ -216,7 +226,7 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box sx={{ flexGrow: 1, p: 1 }}>
+      <Box sx={{ flexGrow: 1, p: 3 }}>
         {/* DrawerHeader is needed in order to show 123 under AppBar */}
         <DrawerHeader />
         123
