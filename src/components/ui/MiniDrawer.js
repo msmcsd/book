@@ -15,6 +15,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Button from "@mui/material/Button";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -22,6 +23,7 @@ import SummarizeIcon from "@mui/icons-material/Summarize";
 import PaidIcon from "@mui/icons-material/Paid";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import GroupIcon from "@mui/icons-material/Group";
+import LockIcon from "@mui/icons-material/Lock";
 
 import { Link } from "react-router-dom";
 
@@ -171,9 +173,12 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" style={{ flex: 1 }}>
             Mini variant drawer
           </Typography>
+          <Button color="inherit" startIcon={<LockIcon />}>
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
