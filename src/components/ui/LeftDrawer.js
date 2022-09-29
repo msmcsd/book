@@ -24,7 +24,7 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import GroupIcon from "@mui/icons-material/Group";
 import LockIcon from "@mui/icons-material/Lock";
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import DrawerHeader from "./DrawerHeader";
 import Dashboard from "../../pages/dashboard/Dashboard";
@@ -36,6 +36,7 @@ import ExpenseTypes from "../../pages/expensetypes/ExpenseTypes";
 import IncomeTypes from "../../pages/incometypes/IncomeTypes";
 import Merchants from "../../pages/merchants/Merchants";
 import Users from "../../pages/users/Users";
+import { useState } from "react";
 
 const drawerWidth = 240;
 
@@ -95,66 +96,76 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const DashboardMenuItems = [
-  {
-    name: "Dashboard",
-    icon: <DashboardIcon />,
-    link: "/",
-    component: <Dashboard />,
-  },
-  {
-    name: "Expenses",
-    icon: <ShoppingCartIcon />,
-    link: "/expenses",
-    component: <Expenses />,
-  },
-  {
-    name: "Income",
-    icon: <PaidIcon />,
-    link: "/income",
-    component: <Income />,
-  },
-  {
-    name: "Yearly Summary",
-    icon: <SummarizeIcon />,
-    link: "/yearlysummary",
-    component: <YearlySummary />,
-  },
-];
-
-const SettingsMenuItems = [
-  {
-    name: "Expense Types",
-    icon: <ShoppingCartIcon />,
-    link: "/expensetypes",
-    component: <ExpenseTypes />,
-  },
-  {
-    name: "Income Types",
-    icon: <PaidIcon />,
-    link: "/incometypes",
-    component: <IncomeTypes />,
-  },
-  {
-    name: "Merchants",
-    icon: <StorefrontIcon />,
-    link: "/merchants",
-    component: <Merchants />,
-  },
-  {
-    name: "Users",
-    icon: <GroupIcon />,
-    link: "/users",
-    component: <Users />,
-  },
-];
-
 export default function LeftDrawer({ open, setOpen }) {
   const theme = useTheme();
 
   // const handleDrawerOpen = () => {
   //   setOpen(true);
   // };
+
+  const [selectedLink, setSelectedLink] = useState("");
+
+  const DashboardMenuItems = [
+    {
+      name: "Dashboard",
+      icon: <DashboardIcon />,
+      link: "/",
+      component: <Dashboard {...{ setSelectedLink, link: "/" }} />,
+    },
+    {
+      name: "Expenses",
+      icon: <ShoppingCartIcon />,
+      link: "/expenses",
+      component: (
+        <Expenses {...{ setSelectedLink, link: "/expensesexpenses" }} />
+      ),
+    },
+    {
+      name: "Income",
+      icon: <PaidIcon />,
+      link: "/income",
+      component: <Income {...{ setSelectedLink, link: "/income" }} />,
+    },
+    {
+      name: "Yearly Summary",
+      icon: <SummarizeIcon />,
+      link: "/yearlysummary",
+      component: (
+        <YearlySummary {...{ setSelectedLink, link: "/yearlysummary" }} />
+      ),
+    },
+  ];
+
+  const SettingsMenuItems = [
+    {
+      name: "Expense Types",
+      icon: <ShoppingCartIcon />,
+      link: "/expensetypes",
+      component: (
+        <ExpenseTypes {...{ setSelectedLink, link: "/expensetypes" }} />
+      ),
+    },
+    {
+      name: "Income Types",
+      icon: <PaidIcon />,
+      link: "/incometypes",
+      component: <IncomeTypes {...{ setSelectedLink, link: "/incometypes" }} />,
+    },
+    {
+      name: "Merchants",
+      icon: <StorefrontIcon />,
+      link: "/merchants",
+      component: <Merchants {...{ setSelectedLink, link: "/merchants" }} />,
+    },
+    {
+      name: "Users",
+      icon: <GroupIcon />,
+      link: "/users",
+      component: <Users {...{ setSelectedLink, link: "/users" }} />,
+    },
+  ];
+
+  const navigate = useNavigate();
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -166,11 +177,12 @@ export default function LeftDrawer({ open, setOpen }) {
         {props.menus.map((menu) => (
           <ListItem
             key={menu.name}
-            onClick={handleDrawerClose}
+            onClick={() => navigate(menu.link)}
+            // onClick={handleDrawerClose}
             disablePadding
             sx={{ display: "block" }}
-            component={Link}
-            to={menu.link}
+            // component={Link}
+            // to={menu.link}
           >
             <ListItemButton
               sx={{
@@ -178,6 +190,8 @@ export default function LeftDrawer({ open, setOpen }) {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
               }}
+              // onClick={() => navigate(menu.link)}
+              selected={selectedLink === menu.link}
             >
               <ListItemIcon
                 sx={{
