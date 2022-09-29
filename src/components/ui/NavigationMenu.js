@@ -89,7 +89,7 @@ const AppBar = styled(MuiAppBar, {
 //   }),
 // }));
 
-export default function MiniDrawer() {
+export default function NavigationMenu() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 

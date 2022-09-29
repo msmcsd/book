@@ -2,10 +2,9 @@ import { ThemeProvider } from "@mui/system";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DrawerHeader from "./components/ui/DrawerHeader";
-import MiniDrawer from "./components/ui/MiniDrawer";
+import NavigationMenu from "./components/ui/NavigationMenu";
 import theme from "./components/ui/Theme";
 import Box from "@mui/material/Box";
-// import MenuNavigation from "./components/ui/MenuNavigation";
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
       <BrowserRouter>
         {/* <MenuNavigation /> */}
         {/* <Box sx={{ display: "flex" }}> */}
-        <MiniDrawer />
+        <NavigationMenu />
         {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <DrawerHeader />
             <Routes>
