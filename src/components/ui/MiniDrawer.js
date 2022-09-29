@@ -29,7 +29,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 
 import DrawerHeader from "./DrawerHeader";
-import LeftBar from "./LeftBar";
+import LeftDrawer from "./LeftDrawer";
 
 const drawerWidth = 240;
 
@@ -72,22 +72,22 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
-}));
+// const Drawer = styled(MuiDrawer, {
+//   shouldForwardProp: (prop) => prop !== "open",
+// })(({ theme, open }) => ({
+//   width: drawerWidth,
+//   flexShrink: 0,
+//   whiteSpace: "nowrap",
+//   boxSizing: "border-box",
+//   ...(open && {
+//     ...openedMixin(theme),
+//     "& .MuiDrawer-paper": openedMixin(theme),
+//   }),
+//   ...(!open && {
+//     ...closedMixin(theme),
+//     "& .MuiDrawer-paper": closedMixin(theme),
+//   }),
+// }));
 
 export default function MiniDrawer() {
   const theme = useTheme();
@@ -101,62 +101,62 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const DashboardMenuItems = [
-    { name: "Dashboard", icon: <DashboardIcon />, link: "/" },
-    { name: "Expenses", icon: <ShoppingCartIcon />, link: "/expenses" },
-    { name: "Income", icon: <PaidIcon />, link: "/income" },
-    { name: "Yearly Summary", icon: <SummarizeIcon />, link: "/yearlysummary" },
-  ];
+  // const DashboardMenuItems = [
+  //   { name: "Dashboard", icon: <DashboardIcon />, link: "/" },
+  //   { name: "Expenses", icon: <ShoppingCartIcon />, link: "/expenses" },
+  //   { name: "Income", icon: <PaidIcon />, link: "/income" },
+  //   { name: "Yearly Summary", icon: <SummarizeIcon />, link: "/yearlysummary" },
+  // ];
 
-  const SettingsMenuItems = [
-    {
-      name: "Expense Types",
-      icon: <ShoppingCartIcon />,
-      link: "/expensetypes",
-    },
-    { name: "Income Types", icon: <PaidIcon />, link: "/incometypes" },
-    { name: "Merchants", icon: <StorefrontIcon />, link: "/merchants" },
-    { name: "Users", icon: <GroupIcon />, link: "/users" },
-  ];
+  // const SettingsMenuItems = [
+  //   {
+  //     name: "Expense Types",
+  //     icon: <ShoppingCartIcon />,
+  //     link: "/expensetypes",
+  //   },
+  //   { name: "Income Types", icon: <PaidIcon />, link: "/incometypes" },
+  //   { name: "Merchants", icon: <StorefrontIcon />, link: "/merchants" },
+  //   { name: "Users", icon: <GroupIcon />, link: "/users" },
+  // ];
 
-  function MenuList(props) {
-    return (
-      <List>
-        {props.menus.map((menu) => (
-          <ListItem
-            key={menu.name}
-            onClick={handleDrawerClose}
-            disablePadding
-            sx={{ display: "block" }}
-            component={Link}
-            to={menu.link}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {menu.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={menu.name}
-                sx={{ opacity: open ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    );
-  }
+  // function MenuList(props) {
+  //   return (
+  //     <List>
+  //       {props.menus.map((menu) => (
+  //         <ListItem
+  //           key={menu.name}
+  //           onClick={handleDrawerClose}
+  //           disablePadding
+  //           sx={{ display: "block" }}
+  //           component={Link}
+  //           to={menu.link}
+  //         >
+  //           <ListItemButton
+  //             sx={{
+  //               minHeight: 48,
+  //               justifyContent: open ? "initial" : "center",
+  //               px: 2.5,
+  //             }}
+  //           >
+  //             <ListItemIcon
+  //               sx={{
+  //                 minWidth: 0,
+  //                 mr: open ? 3 : "auto",
+  //                 justifyContent: "center",
+  //               }}
+  //             >
+  //               {menu.icon}
+  //             </ListItemIcon>
+  //             <ListItemText
+  //               primary={menu.name}
+  //               sx={{ opacity: open ? 1 : 0 }}
+  //             />
+  //           </ListItemButton>
+  //         </ListItem>
+  //       ))}
+  //     </List>
+  //   );
+  // }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -198,7 +198,7 @@ export default function MiniDrawer() {
         <Divider />
         <MenuList menus={SettingsMenuItems} />
       </Drawer> */}
-      <LeftBar {...{ open, setOpen }} />
+      <LeftDrawer {...{ open, setOpen }} />
     </Box>
   );
 }
