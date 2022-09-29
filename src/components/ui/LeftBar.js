@@ -14,6 +14,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -211,17 +212,27 @@ export default function LeftBar({ open, setOpen }) {
         <Divider />
         <MenuList menus={SettingsMenuItems} />
       </Drawer>
-      <DrawerHeader />
-      <Routes>
-        {[...DashboardMenuItems, ...SettingsMenuItems].map((item) => {
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Routes>
+          <Route exact path="/" element={<div>Home</div>} />
+          <Route exact path="/expenses" element={<div>Expenses</div>} />
+          <Route exact path="/income" element={<div>Income</div>} />
           <Route
             exact
-            key={item.name}
-            path={item.link}
-            element={item.component}
-          />;
-        })}
-      </Routes>
+            path="/yearlysummary"
+            element={<div>Yearly Summary</div>}
+          />
+          <Route
+            exact
+            path="/expensetypes"
+            element={<div>Expense Types</div>}
+          />
+          <Route exact path="/incometypes" element={<div>Income Types</div>} />
+          <Route exact path="/merchants" element={<div>Merchants</div>} />
+          <Route exact path="/users" element={<div>Users</div>} />
+        </Routes>
+      </Box>
     </>
   );
 }

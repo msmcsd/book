@@ -5,15 +5,16 @@ import DrawerHeader from "./components/ui/DrawerHeader";
 import MiniDrawer from "./components/ui/MiniDrawer";
 import theme from "./components/ui/Theme";
 import Box from "@mui/material/Box";
+// import MenuNavigation from "./components/ui/MenuNavigation";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        {/* <Header /> */}
-        <Box sx={{ display: "flex" }}>
-          <MiniDrawer />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {/* <MenuNavigation /> */}
+        {/* <Box sx={{ display: "flex" }}> */}
+        <MiniDrawer />
+        {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <DrawerHeader />
             <Routes>
               <Route exact path="/" element={<div>Home</div>} />
@@ -37,8 +38,8 @@ function App() {
               <Route exact path="/merchants" element={<div>Merchants</div>} />
               <Route exact path="/users" element={<div>Users</div>} />
             </Routes>
-          </Box>
-        </Box>
+          </Box> */}
+        {/* </Box> */}
       </BrowserRouter>
     </ThemeProvider>
   );

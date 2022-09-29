@@ -16,6 +16,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -28,6 +29,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 
 import DrawerHeader from "./DrawerHeader";
+import LeftBar from "./LeftBar";
 
 const drawerWidth = 240;
 
@@ -157,7 +159,7 @@ export default function MiniDrawer() {
   }
 
   return (
-    <>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -181,7 +183,7 @@ export default function MiniDrawer() {
           </Button>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      {/* <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -195,7 +197,8 @@ export default function MiniDrawer() {
         <MenuList menus={DashboardMenuItems} />
         <Divider />
         <MenuList menus={SettingsMenuItems} />
-      </Drawer>
-    </>
+      </Drawer> */}
+      <LeftBar {...{ open, setOpen }} />
+    </Box>
   );
 }
