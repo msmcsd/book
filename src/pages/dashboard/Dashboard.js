@@ -5,6 +5,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 
 import YearToDateCard from "./InfoCard";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MonthlyIncomeExpenseChart from "./MonthlyIncomeExpenseChart";
 
 export default function Dashboard({ setSelectedLink, link }) {
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function Dashboard({ setSelectedLink, link }) {
   ];
 
   return (
-    <>
+    <Box>
       <Box sx={{ display: { md: "flex", xs: "grid" } }}>
         {DashboardCards.map((card) => {
           return (
@@ -55,6 +56,9 @@ export default function Dashboard({ setSelectedLink, link }) {
           return <YearToDateCard {...{ name: card.name, value: card.value }} />;
         })}
       </Box>
-    </>
+      <Box sx={{ mt: 5 }}>
+        <MonthlyIncomeExpenseChart />
+      </Box>
+    </Box>
   );
 }
