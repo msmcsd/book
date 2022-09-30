@@ -4,5 +4,9 @@ export default function Expenses({ setSelectedLink, link }) {
   useEffect(() => {
     setSelectedLink(link);
   }, [setSelectedLink, link]);
-  return <div>Expenses</div>;
+  return (
+    <>
+      <div>Expenses</div>
+    </>
+  );
 }
